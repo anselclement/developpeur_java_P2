@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Simple brute force implementation
@@ -63,10 +62,6 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				} else {
 					count.put(Symptoms, 1);
 				}
-			}
-
-			for (Map.Entry<String, Integer> entry : count.entrySet()) {
-				System.out.println(entry.getKey() + " : " + entry.getValue());
 			}
 
 		} catch (Exception e) {
