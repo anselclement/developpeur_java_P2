@@ -19,5 +19,6 @@ public class AnalyticsCounter {
 		ReadSymptomDataFromFile symptomFile = new ReadSymptomDataFromFile("Project02Eclipse/symptoms.txt");
 
 		symptomFile.CountSymptoms();
+		symptomFile.WriteSymptoms();
 	}
 }

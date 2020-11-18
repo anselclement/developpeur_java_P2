@@ -3,9 +3,12 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Simple brute force implementation
@@ -59,11 +62,11 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 * @see GetSymptoms
 	 */
 
-	public void CountSymptoms() throws IOException {
+	public HashMap<String, Integer> CountSymptoms() throws IOException {
+
+		HashMap<String, Integer> count = new HashMap<String, Integer>();
 
 		try {
-			HashMap<String, Integer> count = new HashMap<String, Integer>();
-
 			List<String> listSymptoms = GetSymptoms();
 
 			for (String Symptoms : listSymptoms) {
@@ -75,6 +78,35 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 					count.put(Symptoms, 1);
 				}
 			}
+
+		} catch (Exception e) {
+			System.out.println("Exception : " + e);
+		}
+
+		return count;
+	}
+
+	/**
+	 * use a treemap to have an alphabetically ordered list and then write this Tree
+	 * map to a results.out file
+	 * 
+	 * @throws IOException IOException whenever an input or output operation is
+	 *                     failed or interpreted
+	 * 
+	 * @see CountSymptoms()
+	 */
+	public void WriteSymptoms() throws IOException {
+
+		TreeMap<String, Integer> transfert = new TreeMap<String, Integer>(CountSymptoms());
+
+		try {
+			PrintWriter results = new PrintWriter("Project02Eclipse/results.out");
+
+			for (Map.Entry<String, Integer> entry : transfert.entrySet()) {
+				results.write(entry.getKey() + " : " + entry.getValue() + "\r\n");
+			}
+
+			results.close();
 
 		} catch (Exception e) {
 			System.out.println("Exception : " + e);
