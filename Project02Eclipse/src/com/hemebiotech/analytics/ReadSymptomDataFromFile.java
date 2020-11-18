@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * Simple brute force implementation
+ * 
+ * @author clement
  *
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
@@ -46,6 +48,16 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 
 		return result;
 	}
+
+	/**
+	 * counts the number of occurrences of symptoms and integrates them into a Hash
+	 * map
+	 * 
+	 * @throws IOException whenever an input or output operation is failed or
+	 *                     interpreted
+	 * 
+	 * @see GetSymptoms
+	 */
 
 	public void CountSymptoms() throws IOException {
 
